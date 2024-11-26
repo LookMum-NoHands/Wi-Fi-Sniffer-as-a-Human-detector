@@ -50,7 +50,7 @@ int usedChannels[15];
 StaticJsonDocument<JBUFFER>  jsonBuffer;
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(4800);
   Serial.printf("\n\nSDK version:%s\n\r", system_get_sdk_version());
   Serial.println(F("Human detector by Andreas Spiess. ESP8266 mini-sniff by Ray Burnette http://www.hackster.io/rayburne/projects"));
   Serial.println(F("Based on the work of Ray Burnette http://www.hackster.io/rayburne/projects"));
@@ -71,7 +71,7 @@ void loop() {
   wifi_set_channel(channel);
   while (true) {
     nothing_new++;                          // Array is not finite, check bounds and adjust if required
-    if (nothing_new > 200) {                // monitor channel for 200 ms
+    if (nothing_new > 115200) {             // monitor channel for 200 ms
       nothing_new = 0;
       channel++;
       if (channel == 15) break;             // Only scan channels 1 to 14
